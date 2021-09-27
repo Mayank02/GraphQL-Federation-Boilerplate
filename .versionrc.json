@@ -1,0 +1,14 @@
+{
+  "types": [
+    {"type": "chore", "section":"Others", "hidden": true},
+    {"type": "feat", "section": "Features", "hidden": false},
+    {"type": "fix", "section": "Bug Fixes", "hidden": false},
+    {"type": "hotfix", "section": "Hotfix", "hidden": false},
+    {"type": "release", "section":"Release", "hidden": false}
+  ],
+  "releaseCommitMessageFormat": "chore: CHAN-0000 Updated changelog for {{currentTag}}",
+  "issuePrefixes": [
+    "CHAN-"
+  ],
+  "issueUrlFormat": "https://ltmhedge.atlassian.net/browse/CHAN-{{id}}"
+}

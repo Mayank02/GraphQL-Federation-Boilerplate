@@ -1,0 +1,16 @@
+{
+    "teams": [
+      {
+        "id": 1,
+        "first_name": "Mantas",
+        "last_name": "Trasauskas",
+        "email": "mantas.trasauskas@e.lloydsbanking.com"
+      },
+      {
+        "id": 2,
+        "first_name": "Leonas",
+        "last_name": "Komaras",
+        "email": "leonas.komaras@e.lloydsbanking.com"
+      }
+    ]
+  }

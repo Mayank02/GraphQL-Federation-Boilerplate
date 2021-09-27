@@ -1,0 +1,158 @@
+---
+openapi: "3.0.0"
+info:
+  title: "API"
+  description: "Customer Service API Spec"
+  version: "2.1.0"
+servers:
+  - url: "https://{hostname}:{port}/customer-service/v2.0"
+    variables:
+      hostname:
+        default: "localhost"
+      port:
+        default: "443"
+        enum:
+          - "443"
+          - "8443"
+  - url: "http://{hostname}:{port}/customer-service/v2.0"
+    variables:
+      hostname:
+        default: "localhost"
+      port:
+        default: "9080"
+        enum:
+          - "9080"
+security:
+  - bearerAuth: []
+  - systemId: []
+tags:
+  - name: "Customer"
+    description: "Customer Service APIs"
+paths:
+  /customers/{party-id}:
+    get:
+      tags:
+        - "Customer"
+      summary: "Returns customer details"
+      operationId: "getCustomerDetails"
+      parameters:
+        - name: "party-id"
+          in: "path"
+          description: "party Id"
+          required: true
+          explode: false
+          schema:
+            type: "string"
+      responses:
+        "200":
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ReadCustomerAggregatedWrapper"
+        "400":
+          description: "Bad request"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorData"
+        "404":
+          description: "Resource not found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorData"
+        "415":
+          description: "Mediatype Not Supported"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorData"
+        "500":
+          description: "Internal server error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorData"
+components:
+  schemas:
+    ReadCustomerWithEnumStrings:
+      type: "object"
+      properties:
+        CustomerId:
+          type: "string"
+        TitleText:
+          type: "string"
+          example: "Mr"
+        FirstName:
+          minLength: 2
+          type: "string"
+          example: "Ross"
+          pattern:
+            "^(?!')(?!-)(?!\\.)(?!.*[\\'\\-\\.]{2})(?!.*'$)(?!.*-$)(?!.* $)[A-Za-z'\
+            \ \\.-]*$"
+        MiddleName:
+          minLength: 2
+          type: "string"
+          nullable: true
+          pattern:
+            "^(?!')(?!-)(?!\\.)(?!.*[\\'\\-\\.]{2})(?!.*'$)(?!.*-$)(?!.* $)[A-Za-z'\
+            \ \\.-]*$"
+          default: "null"
+        LastName:
+          minLength: 2
+          type: "string"
+          example: "Poldark"
+          pattern:
+            "^(?!')(?!-)(?!\\.)(?!.*[\\'\\-\\.]{2})(?!.*'$)(?!.*-$)(?!.* $)[A-Za-z'\
+            \ \\.-]*$"
+        Suffix:
+          type: "string"
+          nullable: true
+        DateOfBirth:
+          type: "string"
+          format: "date"
+          example: "1966-06-23T00:00:00.000+0000"
+        Gender:
+          type: "integer"
+          description:
+            "* Male = 1 * Female = 2 * Unspecified/Prefer not to say = 3 *\
+            \ Non-Binary = 4"
+          nullable: true
+          example: 2
+          default: 1
+          enum:
+            - 1
+            - 2
+            - 3
+            - 4
+    ReadCustomerAggregatedWrapper:
+      type: "object"
+      properties:
+        Data:
+          type: "object"
+          properties:
+            Customer:
+              $ref: "#/components/schemas/ReadCustomerWithEnumStrings"
+    ErrorData:
+      properties:
+        Error:
+          type: "array"
+          items:
+            type: "object"
+            properties:
+              Code:
+                type: "string"
+              ReasonCode:
+                type: "string"
+              Message:
+                type: "string"
+  securitySchemes:
+    bearerAuth:
+      type: "http"
+      scheme: "bearer"
+      bearerFormat: "JWT"
+    systemId:
+      type: "apiKey"
+      name: "x-internal-system-id"
+      in: "header"

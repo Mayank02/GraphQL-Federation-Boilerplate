@@ -1,0 +1,45 @@
+node_modules/
+dist/
+!**/src/main/**
+!**/src/test/**
+**/.env
+**/tsconfig.tsbuildinfo
+yarn-error.log
+
+
+**/.nyc_output**
+**/coverage**
+**/test-results.xml
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+!.idea/runConfigurations
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+
+### VS Code ###
+# .vscode/
+.DS_Store
+
+### Voyager ###
+junit.xml
+test-report.html
+report.xml

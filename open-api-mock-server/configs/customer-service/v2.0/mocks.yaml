@@ -1,0 +1,257 @@
+getCustomerDetails:
+  - pathToMatch: ba63c64b-254e-45fc-ac16-fc0d9118f30c
+    allHeadersToMatch:
+    response:
+      status: 200
+      json:
+        Data:
+          Customer:
+            CustomerId: ba63c64b-254e-45fc-ac16-fc0d9118f30c
+            Title: 126
+            FirstName: "Adam"
+            MiddleName: "Ben"
+            LastName: "Candle"
+            Suffix: "PhD"
+            PreviousSurname: ""
+            DateOfBirth: "1950-12-23"
+            TitleText: "Mr"
+            Gender: 1
+  - pathToMatch: 80bd51c7-04bc-4e1a-bd22-c63709d14c1c
+    allHeadersToMatch:
+    response:
+      status: 200
+      json:
+        Data:
+          Customer:
+            CustomerId: 80bd51c7-04bc-4e1a-bd22-c63709d14c1c
+            Title: 99
+            FirstName: "Devon"
+            MiddleName: "Eileen"
+            LastName: "Fan"
+            Suffix: "Dame"
+            PreviousSurname: "Rose"
+            DateOfBirth: "1951-10-31"
+            Gender: 2
+  - pathToMatch: ba63c64b-254e-45fc-ac16-fc0d9118f30d
+    allHeadersToMatch:
+    response:
+      status: 201
+      json:
+        somemessage: test messages of customer ending in d
+  - pathToMatch: 0123456789
+    allHeadersToMatch:
+      authorization: "Bearer"
+    response:
+      status: 200
+      json:
+        Data:
+          Customer:
+            CustomerId: "0123456789"
+            Title: 126
+            FirstName: "Adam"
+            MiddleName: "Ben"
+            LastName: "Candle"
+            Suffix: "PhD"
+            PreviousSurname: ""
+            DateOfBirth: "1950-12-23"
+            Gender: 1
+            TitleText: "Mr"
+  - pathToMatch: 0214365878
+    allHeadersToMatch:
+      authorization: "Bearer"
+    response:
+      status: 200
+      json:
+        Data:
+          Customer:
+            CustomerId: "0214365878"
+            Title: 126
+            FirstName: "Nat"
+            MiddleName: "Jones"
+            LastName: "Smith"
+            Suffix: "PhD"
+            PreviousSurname: ""
+            DateOfBirth: "1950-12-23"
+            Gender: 2
+            Statuses:
+              - CreatedBy: "2f7ad4f8-f54f-4d63-8550-fa6f7feea4e0"
+                CreatedTimestamp: "2020-10-20T08:05:08Z"
+                LastModifiedBy: "2f7ad4f8-f54f-4d63-8550-fa6f7feea4e0"
+                LastModifiedTimestamp: "2021-02-16T16:37:11Z"
+                ModifierRole: "Customer"
+                CustomerId: "2f7ad4f8-f54f-4d63-8550-fa6f7feea4e0"
+                CustomerStatusId: "f54eb52b-f2c1-4a6b-aa89-e70ce4800732"
+                StatusCode: 1004
+                IndicatorStatus: "ACTIVE"
+                ExpireDate: "2022-02-05"
+              - CreatedBy: "2f7ad4f8-f54f-4d63-8550-fa6f7feea4e0"
+                CreatedTimestamp: "2020-11-15T08:05:08Z"
+                LastModifiedBy: "2f7ad4f8-f54f-4d63-8550-fa6f7feea4e0"
+                LastModifiedTimestamp: "2021-02-16T16:37:11Z"
+                CustomerId: "2f7ad4f8-f54f-4d63-8550-fa6f7feea4e0"
+                CustomerStatusId: "f54eb52b-f2c1-4a6b-aa89-e70ce4800732"
+                StatusCode: 1019
+                IndicatorStatus: "ACTIVE"
+                Comment: "This is a test placeholder comment"
+                ExplicitConsent: "CONSENT_NOT_REQUIRED"
+              - CreatedBy: "2f7ad4f8-f54f-4d63-8550-fa6f7feea4e0"
+                CreatedTimestamp: "2020-11-10T08:05:08Z"
+                LastModifiedBy: "2f7ad4f8-f54f-4d63-8550-fa6f7feea4e0"
+                LastModifiedTimestamp: "2021-02-16T16:37:11Z"
+                CustomerId: "2f7ad4f8-f54f-4d63-8550-fa6f7feea4e0"
+                CustomerStatusId: "f54eb52b-f2c1-4a6b-aa89-e70ce4800732"
+                StatusCode: 1034
+                IndicatorStatus: "ACTIVE"
+                Comment: "This is a test placeholder comment"
+                ExplicitConsent: "CONSENT_NOT_REQUIRED"
+            TitleText: "Ms"
+            ContactDetails:
+              - ContactType: 2
+                DialingCode: "+44"
+                PhoneNumber: 7879899097
+                ContactDetailId: "321323"
+                Status: 1
+              - ContactType: 7
+                DialingCode: "+44"
+                PhoneNumber: 7879856489
+                Status: 3
+                ContactDetailId: "3213323"
+              - ContactType: 8
+                DialingCode: "+44"
+                PhoneNumber: 7205503008
+                Status: 1
+                ContactDetailId: "4213323"
+              - ContactType: 3
+                DialingCode: "+44"
+                PhoneNumber: 7483090977
+                Status: 1
+                ContactDetailId: "5213323"
+              - ContactType: 1
+                ContactReference: "test@test123.com"
+                Status: 1
+                ContactDetailId: "3213423"
+            Addresses:
+              - LastModifiedTimestamp: "2020-12-16T13:35:03Z"
+                AddressId: "153e4567-e89b-12d3-a456-426614174000"
+                AddressType: 1
+                FirstLine: "Flat 149"
+                SecondLine: "The Oxygen"
+                ThirdLine: "18 Western Gateway"
+                PostalCode: "E16 1BQ"
+                CountryCode: "GBR"
+                StartDate: "2017-03-23"
+                EndDate: "2020-12-14"
+                City: "London"
+              - LastModifiedTimestamp: "2021-01-13T09:53:13Z"
+                AddressId: "253e4567-e89b-12d3-a456-426614174000"
+                AddressType: 1
+                FirstLine: "Fuchsia Cottage"
+                SecondLine: "Castle Dyke Bank"
+                ThirdLine: "New York"
+                PostalCode: "LN4 4XF"
+                CountryCode: "ALB"
+                SharedAddress: false
+                City: "Lincoln"
+            CountryAssociations:
+              - CountryCode: "USA"
+                AssociationTypeCode: 5
+                EndDate: "2021-01-13"
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "USA"
+                  IdentifierReference: "TIN_INFORMATION_NOT_AVAILABLE"
+              - CountryCode: "BEL"
+                AssociationTypeCode: 4
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "BEL"
+                  IdentifierReference: "BHU12341244"
+              - CountryCode: "AND"
+                AssociationTypeCode: 4
+                EndDate: "2021-01-13"
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "AND"
+                  IdentifierReference: "RESIDENT_COUNTRY_DOMESTIC_LAWS_DOES_NOT_REQUIRE_TIN"
+              - CountryCode: "ARE"
+                AssociationTypeCode: 4
+                StartDate: "2021-01-13"
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "ARE"
+                  IdentifierReference: "BHUYRET12244"
+              - CountryCode: "BFA"
+                AssociationTypeCode: 4
+                StartDate: "2021-01-13"
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "BFA"
+                  IdentifierReference: "DASH1234591"
+              - CountryCode: "GBR"
+                AssociationTypeCode: 2
+                EndDate: "2021-01-13"
+                Identifier:
+                  IdentifierCode: "NINO"
+                  CountryCode: "GBR"
+                  IdentifierReference: "999999998"
+              - CountryCode: "AFG"
+                AssociationTypeCode: 1
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "AFG"
+                  IdentifierReference: "ABH1234560"
+              - CountryCode: "ALA"
+                AssociationTypeCode: 4
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "ALA"
+                  IdentifierReference: "RESIDENT_COUNTRY_DOMESTIC_LAWS_DOES_NOT_REQUIRE_TIN"
+              - CountryCode: "AIA"
+                AssociationTypeCode: 4
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "AIA"
+                  IdentifierReference: "ABCDEF12345"
+              - CountryCode: "AGO"
+                AssociationTypeCode: 4
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "AGO"
+                  IdentifierReference: "ABHG12344"
+              - CountryCode: "AFG"
+                AssociationTypeCode: 4
+                EndDate: "2021-01-05"
+                Identifier:
+                  IdentifierCode: "TIN"
+                  CountryCode: "AFG"
+                  IdentifierReference: "ABH1234560"
+            EmploymentDetails:
+              - EmploymentStatus: 1
+                OccupationCode: "0110.1"
+            BrandPreferences:
+              - Preference: 6
+                PreferenceValue: 11
+                CustomerPreferenceId: "253e4567-e89b-12d3-a456-426614174000"
+              - Preference: 7
+                PreferenceValue: 30
+                CustomerPreferenceId: "153e4567-e89b-12d3-a456-426614174000"
+              - Preference: 8
+                PreferenceValue: 42
+                CustomerPreferenceId: "353e4567-e89b-12d3-a456-426614174000"
+  - pathToMatch: 0214365879
+    allHeadersToMatch:
+    response:
+      status: 200
+      json:
+        Data:
+          Customer:
+            CustomerId: "0214365879"
+            Title: 126
+            FirstName: "Tracy"
+            MiddleName: "Jones"
+            LastName: "White"
+            Suffix: "PhD"
+            PreviousSurname: ""
+            DateOfBirth: "1950-12-23"
+            Gender: 2
+            TitleText: "Mr"

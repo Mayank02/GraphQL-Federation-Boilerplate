@@ -1,0 +1,9 @@
+# Default values for graphql federation.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+image:
+  repository: eu.gcr.io/eplus-chl-bld-02-be48/mock-rest-server
+  pullPolicy: Always
+# TODO: settings for Auth service
+# TODO: get settings dynamically in each env

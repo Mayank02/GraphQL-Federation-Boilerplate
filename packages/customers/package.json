@@ -1,0 +1,57 @@
+{
+  "name": "customers",
+  "version": "0.0.1",
+  "description": "federated graphql service that talks to customers microservice",
+  "keywords": [
+    "graphql"
+  ],
+  "main": "dist/server.js",
+  "directories": {},
+  "files": [],
+  "scripts": {
+    "build": "yarn clean && yarn build:ts && yarn copy-non-ts",
+    "build:prod": "yarn build:ts && yarn copy-non-ts",
+    "build:ts": "npx tsc --project tsconfig.json",
+    "copy-non-ts": "cp src/schema.graphql dist/schema.graphql",
+    "copy:shared": "rm -rf node_modules/@common-utils/graphql-shared && rsync -a ../../graphql-shared node_modules/@common-utils --exclude graphql-shared/node_modules/graphql/ --exclude graphql-shared/src/",
+    "clean": "rm -rf dist .nyc_output coverage .scannerwork tsconfig.tsbuildinfo tests/test-results.xml yarn-error.log",
+    "clean:node": "rm -rf node_modules",
+    "lint": "eslint --config ../../.eslintrc.js --ignore-path ../../.eslintignore src",
+    "init:env": "cp .env.sample .env",
+    "start": "ts-node src/server.ts",
+    "start:mock": "APOLLO_MOCKS=1 APOLLO_MOCK_ENTIRE_SCHEMA=1 yarn start",
+    "start:mock:partial": "APOLLO_MOCKS=1 APOLLO_MOCK_ENTIRE_SCHEMA=0 yarn start",
+    "prod:start": "NODE_ENV=production node dist/server.js",
+    "test:ci": "NODE_ENV=test jest --ci --colors --coverage --selectProjects customers --config=../../jest.config.js",
+    "watch": "nodemon src/server.ts",
+    "gen:schema:code": "graphql-codegen",
+    "gen:client:customers": "cd ../../openapi-client-code-generator && node -r ./bin/tshook.js ./bin/gen.ts -l 1 -i ../open-api-mock-server/configs/customer-service/v2.0/spec.yaml -o ../packages/customers/src/services/customers/generated/index.ts -n Customers",
+    "gen:client": "yarn gen:client:customers"
+  },
+  "dependencies": {
+    "@apollo/gateway": "0.38.0",
+    "@common-utils/graphql-shared": "file:../../graphql-shared/lib",
+    "apollo-datasource-rest": "^0.9.4",
+    "apollo-server": "^3.1.2",
+    "apollo-server-core": "^3.3.0",
+    "apollo-server-env": "^2.4.5",
+    "apollo-server-express": "^3.1.2",
+    "apollo-server-plugin-base": "^3.1.1",
+    "apollo-server-types": "^3.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.1.0",
+    "graphql": "15.5.1",
+    "graphql-middleware": "6.1.4",
+    "graphql-shield": "^7.5.0",
+    "winston": "^3.3.3",
+    "yup": "0.29.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "@types/node": "^14.14.0",
+    "lodash": "^4.17.21",
+    "sonarqube-scanner": "^2.7.0"
+  },
+  "resolutions": {}
+}

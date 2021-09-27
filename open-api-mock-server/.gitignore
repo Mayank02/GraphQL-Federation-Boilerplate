@@ -1,0 +1,14 @@
+**/dist/**
+node_modules
+.scannerwork
+yarn-error.log
+.idea/
+
+.env
+
+.nyc_output
+
+.DS_Store
+
+test-results.xml
+.vscode

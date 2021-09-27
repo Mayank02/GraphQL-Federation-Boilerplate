@@ -1,0 +1,59 @@
+{
+  "name": "federation",
+  "version": "0.0.1",
+  "description": "Federation/gateway service for federated GraphQL services",
+  "keywords": [
+    "graphql",
+    "federation"
+  ],
+  "contributors": [
+    "FrederickMacGregor <fmacgre2@uk.ibm.com>"
+  ],
+  "main": "dist/server.js",
+  "directories": {},
+  "files": [],
+  "scripts": {
+    "build": "yarn clean && yarn build:ts",
+    "build:ts": "npx tsc --project tsconfig.json",
+    "build:prod": "yarn build:ts",
+    "clean": "rm -rf dist .nyc_output coverage .scannerwork tsconfig.tsbuildinfo tests/test-results.xml yarn-error.log",
+    "clean:node": "rm -rf node_modules",
+    "copy:shared": "rm -rf node_modules/@common-utils/graphql-shared && rsync -a ../../graphql-shared node_modules/@common-utils --exclude graphql-shared/node_modules/graphql/ --exclude graphql-shared/src/",
+    "lint": "eslint --config ../../.eslintrc.js --ignore-path ../../.eslintignore src",
+    "init:env": "cp .env.sample .env",
+    "start": "sleep 5 && ts-node src/server.ts",
+    "start:mock": "yarn start",
+    "start:mock:partial": "yarn start",
+    "prod:start": "NODE_ENV=production node dist/server.js",
+    "test:ci": "NODE_ENV=test jest --ci --colors --coverage --selectProjects federation --config=../../jest.config.js",
+    "test:ci-TODO": "NODE_ENV=test jest --ci --colors --coverage --selectProjects federation --config=../../jest.config.js",
+    "watch": "sleep 10 && nodemon src/server.ts"
+  },
+  "dependencies": {
+    "@apollo/gateway": "0.38.0",
+    "@common-utils/graphql-shared": "file:../../graphql-shared/lib",
+    "apollo-datasource-rest": "^0.9.4",
+    "apollo-server": "^3.1.2",
+    "apollo-server-core": "^3.3.0",
+    "apollo-server-env": "^2.4.5",
+    "apollo-server-express": "^3.1.2",
+    "apollo-server-plugin-base": "^3.1.1",
+    "apollo-server-types": "^3.2.0",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-jwt": "^6.1.0",
+    "global-agent": "^2.1.12",
+    "graphql": "15.5.1",
+    "graphql-cost-analysis": "^1.0.3",
+    "graphql-depth-limit": "^1.1.0",
+    "graphql-middleware": "6.1.4",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.8",
+    "@types/node": "^14.14.0",
+    "lodash": "^4.17.21",
+    "sonarqube-scanner": "^2.7.0"
+  },
+  "resolutions": {}
+}

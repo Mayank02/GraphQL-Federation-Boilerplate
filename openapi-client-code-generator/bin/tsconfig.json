@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig",
+  "compilerOptions": {
+    "module": "commonjs",
+    "types": ["node"],
+    "rootDir": "bin",
+    "strict": false,
+    "isolatedModules": false,
+  },
+  "include": [
+    "../src",
+    "./**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
